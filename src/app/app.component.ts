@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {User} from './user/User';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  user: User;
   title = 'frontendSSD';
   selection = true;
+
+  receiveMessage($event) {
+    this.user = $event;
+  }
+
 }

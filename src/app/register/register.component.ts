@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {first} from 'rxjs/operators';
 import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http';
+import {User} from '../user/User';
+import {Role} from '../role/Role';
 
 
 @Component({
@@ -24,7 +26,6 @@ export class RegisterComponent implements OnInit {
     const email = e.target.elements[3].value;
     const password = e.target.elements[4].value;
 
-
     this.http.get('http://localhost:8080/SSDBackend/user/addUser?username=' + username + '&password=' + password + '' +
       '&active=true' + '&firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=GAMER').subscribe(
       (value: any[]) => {
@@ -35,4 +36,5 @@ export class RegisterComponent implements OnInit {
     return false;
 
   }
+
 }

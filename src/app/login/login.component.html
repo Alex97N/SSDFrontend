@@ -1,5 +1,5 @@
 <div class="w3-container w3-center">
-  <form>
+  <form (submit)="login($event)">
     <div class="input-group">
       <label>Username</label>
       <input type="text" id="username" >
@@ -9,7 +9,7 @@
       <input type="password" id="pass">
     </div>
     <div class="input-group">
-      <button class="btn" name="login_user">Submit</button>
+      <button type="submit" class="btn" id="login_user">Submit</button>
     </div>
   </form>
 </div>
