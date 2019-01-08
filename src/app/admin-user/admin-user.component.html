@@ -1,0 +1,13 @@
+<div class="w3-container w3-center">
+  <button (click)="sel=1" class="btn">Add User</button>
+  <button (click)="sel=2" class="btn">Manage Users</button>
+
+  <div *ngIf="sel==1">
+    <app-admin-add-user></app-admin-add-user>
+  </div>
+
+  <div *ngIf="sel==2">
+    <app-admin-manage-users></app-admin-manage-users>
+  </div>
+
+</div>

@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
+import { GamerUserComponent } from './gamer-user/gamer-user.component';
+import { AdminAddUserComponent } from './admin-add-user/admin-add-user.component';
+import { AdminManageUsersComponent } from './admin-manage-users/admin-manage-users.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +18,10 @@ import { HomepageComponent } from './homepage/homepage.component';
     LoginComponent,
     RegisterComponent,
     HomepageComponent,
+    AdminUserComponent,
+    GamerUserComponent,
+    AdminAddUserComponent,
+    AdminManageUsersComponent,
   ],
   imports: [
     BrowserModule,
