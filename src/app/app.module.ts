@@ -11,6 +11,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { GamerUserComponent } from './gamer-user/gamer-user.component';
 import { AdminAddUserComponent } from './admin-add-user/admin-add-user.component';
 import { AdminManageUsersComponent } from './admin-manage-users/admin-manage-users.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,12 @@ import { AdminManageUsersComponent } from './admin-manage-users/admin-manage-use
     AdminUserComponent,
     GamerUserComponent,
     AdminAddUserComponent,
-    AdminManageUsersComponent,
+    AdminManageUsersComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
