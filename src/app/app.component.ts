@@ -7,12 +7,12 @@ import {User} from './user/User';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  user: User;
+  loggedInUser: User;
   title = 'frontendSSD';
   selection = true;
 
   receiveMessage($event) {
-    this.user = $event;
+    this.loggedInUser = $event;
   }
 
 }

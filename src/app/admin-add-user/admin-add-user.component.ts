@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -8,7 +8,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AdminAddUserComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
   }
@@ -23,11 +24,13 @@ export class AdminAddUserComponent implements OnInit {
     const role = e.target.elements[5].value;
 
     this.http.get('http://localhost:8080/SSDBackend/user/addUser?username=' + username + '&password=' + password + '' +
-      '&active=true' + '&firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=' + role).subscribe(
-      (value: any[]) => {
+      '&active=true' + '&firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=' + role, {responseType: 'text'}).subscribe(
+      (value: String) => {
         console.log(value);
       }
     );
+
+    return false;
 
   }
 }

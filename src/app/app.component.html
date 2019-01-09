@@ -7,17 +7,22 @@
   <br><br><br><br><br>
 </div>
 <div class="w3-container w3-center">
-  <button (click)="selection=true" class="btn">Log in</button>
-  <button (click)="selection=false" class="btn">Register</button>
 
-  <div *ngIf="user">
-    <app-homepage></app-homepage>
+  <div *ngIf="loggedInUser">
+    <div *ngIf="loggedInUser.role.name === 'ADMINISTRATOR'">
+      <app-admin-user (messageEvent)="receiveMessage($event)"></app-admin-user>
+    </div>
   </div>
-  <div *ngIf="selection">
-    <app-login (messageEvent)="receiveMessage($event)"></app-login>
+  <div *ngIf="!loggedInUser">
+    <button (click)="selection=true" class="btn">Log in</button>
+    <button (click)="selection=false" class="btn">Register</button>
+
+    <div *ngIf="selection">
+      <app-login (messageEvent)="receiveMessage($event)"></app-login>
+    </div>
+    <div *ngIf="!selection">
+      <app-register></app-register>
+    </div>
   </div>
-  <div *ngIf="!selection">
-    <app-register></app-register>
-  </div>
-  <app-gamer-user></app-gamer-user>
+
 </div>

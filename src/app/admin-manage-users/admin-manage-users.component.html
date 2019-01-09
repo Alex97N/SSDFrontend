@@ -1,5 +1,24 @@
+<div class="w3-container w3-center">
+  <form (submit)="updateUser($event)">
+    <div>
+      <label>Users</label>
+      <br/>
+      <select [(ngModel)]="selectedUser" [ngModelOptions]="{standalone: true}">
+        <option [ngValue]="user" *ngFor="let user of users">{{user.username}}</option>
+      </select>
+    </div>
+    <div>
+      <label>Active</label>
+      <br/>
+      <select>
+        <option>{{selectedUser.active}}</option>
+        <option>{{!selectedUser.active}}</option>
+      </select>
+    </div>
 
+    <div class="input-group">
+      <button type="submit" class="btn" id="update_user">Update User</button>
+    </div>
 
-<div class="w3-container w3-center" >
-
+  </form>
 </div>

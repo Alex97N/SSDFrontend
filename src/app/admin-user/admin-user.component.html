@@ -1,6 +1,7 @@
 <div class="w3-container w3-center">
   <button (click)="sel=1" class="btn">Add User</button>
   <button (click)="sel=2" class="btn">Manage Users</button>
+  <button (click)="loggedOutClicked($event)" class="btn">Log Out</button>
 
   <div *ngIf="sel==1">
     <app-admin-add-user></app-admin-add-user>
