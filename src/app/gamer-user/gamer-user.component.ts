@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GamerUserComponent implements OnInit {
 
+  usel = 0;
+
   constructor() { }
 
   ngOnInit() {
