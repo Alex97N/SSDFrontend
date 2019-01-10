@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../user/User';
 
 @Component({
   selector: 'app-check-scores',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./check-scores.component.css']
 })
 export class CheckScoresComponent implements OnInit {
+
+  @Input() loggedInUser: User;
+
+  snr = 0;
 
   constructor() { }
 

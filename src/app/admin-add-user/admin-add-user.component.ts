@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {CustomHttpService} from '../services/custom-http.service';
+import {Message} from '../message/message';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-add-user',
@@ -8,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AdminAddUserComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: CustomHttpService, private toasterService: ToastrService) {
   }
 
   ngOnInit() {
@@ -23,14 +26,17 @@ export class AdminAddUserComponent implements OnInit {
     const password = e.target.elements[4].value;
     const role = e.target.elements[5].value;
 
-    this.http.get('http://localhost:8080/SSDBackend/user/addUser?username=' + username + '&password=' + password + '' +
-      '&active=true' + '&firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=' + role, {responseType: 'text'}).subscribe(
-      (value: String) => {
+    this.http.get('/user/addUser?username=' + username + '&password=' + password + '' + '&active=true' + '&firstName='
+      + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=' + role).subscribe(
+      (value: Message) => {
         console.log(value);
+        if (value) {
+          this.toasterService.success(value.message);
+        } else {
+          this.toasterService.error(value.message);
+        }
       }
     );
-
-    return false;
 
   }
 }

@@ -8,7 +8,7 @@ import {User} from './user/User';
 })
 export class AppComponent {
   loggedInUser: User;
-  title = 'frontendSSD';
+  title = 'Gateway';
   selection = true;
 
   receiveMessage($event) {

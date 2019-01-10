@@ -10,7 +10,10 @@
 
   <div *ngIf="loggedInUser">
     <div *ngIf="loggedInUser.role.name === 'ADMINISTRATOR'">
-      <app-admin-user (messageEvent)="receiveMessage($event)"></app-admin-user>
+      <app-admin-user [loggedInUser]="loggedInUser" (messageEvent)="receiveMessage($event)"></app-admin-user>
+    </div>
+    <div *ngIf="loggedInUser.role.name === 'GAMER'">
+      <app-gamer-user [loggedInUser]="loggedInUser" (messageEvent)="receiveMessage($event)"></app-gamer-user>
     </div>
   </div>
   <div *ngIf="!loggedInUser">

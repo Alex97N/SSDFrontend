@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {first} from 'rxjs/operators';
-import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http';
-import {User} from '../user/User';
-import {Role} from '../role/Role';
+import {ToastrService} from 'ngx-toastr';
+import {CustomHttpService} from '../services/custom-http.service';
+import {Message} from '../message/message';
 
 
 @Component({
@@ -12,7 +11,7 @@ import {Role} from '../role/Role';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: CustomHttpService, private toasterService: ToastrService) {
   }
 
   ngOnInit() {
@@ -25,15 +24,23 @@ export class RegisterComponent implements OnInit {
     const lastName = e.target.elements[2].value;
     const email = e.target.elements[3].value;
     const password = e.target.elements[4].value;
+    const reenteredPassword = e.target.elements[5].value;
 
-    this.http.get('http://localhost:8080/SSDBackend/user/addUser?username=' + username + '&password=' + password + '' +
-      '&active=true' + '&firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=GAMER').subscribe(
-      (value: any[]) => {
-        console.log(value);
-      }
-    );
-
-    return false;
+    if (password === reenteredPassword) {
+      this.http.get('user/addUser?username=' + username + '&password=' + password + '' +
+        '&active=true' + '&firstName=' + firstName + '&lastName=' + lastName + '&email=' + email + '&roleName=GAMER').subscribe(
+        (value: Message) => {
+          console.log(value);
+          if (value) {
+            this.toasterService.success(value.message);
+          } else {
+            this.toasterService.error(value.message);
+          }
+        }
+      );
+    } else {
+      this.toasterService.error('Passwords don\'t match');
+    }
 
   }
 

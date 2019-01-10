@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from '../user/User';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-gamer-user',
@@ -9,9 +11,17 @@ export class GamerUserComponent implements OnInit {
 
   usel = 0;
 
-  constructor() { }
+  @Output() messageEvent = new EventEmitter<User>();
+  @Input() loggedInUser: User;
+
+  constructor(private toasterService: ToastrService) { }
 
   ngOnInit() {
   }
 
+  loggedOutClicked(e) {
+    this.toasterService.success('User successfully logged out !');
+    this.messageEvent.emit(null);
+  }
 }
+

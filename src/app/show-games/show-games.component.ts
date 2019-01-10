@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowGamesComponent implements OnInit {
 
-  gnr =0;
+  gnr = 0;
 
   constructor() { }
 

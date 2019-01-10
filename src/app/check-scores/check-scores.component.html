@@ -1,3 +1,13 @@
-<p>
-  check-scores works!
-</p>
+<div class="w3-container w3-center">
+  <button (click)="snr=1" class="btn">Check your scores</button>
+  <button (click)="snr=2" class="btn">Check global scores</button>
+
+  <div *ngIf="snr==1">
+    <app-check-user-scores [loggedInUser]="loggedInUser"></app-check-user-scores>
+  </div>
+
+  <div *ngIf="snr==2">
+    <!--<app-game2></app-game2>-->
+  </div>
+
+</div>

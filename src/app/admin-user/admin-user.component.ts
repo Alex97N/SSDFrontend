@@ -1,5 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../user/User';
+import {CustomHttpService} from '../services/custom-http.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-user',
@@ -11,13 +13,15 @@ export class AdminUserComponent implements OnInit {
   sel = 0;
 
   @Output() messageEvent = new EventEmitter<User>();
+  @Input() loggedInUser: User;
 
-  constructor() { }
+  constructor(private toasterService: ToastrService) { }
 
   ngOnInit() {
   }
 
   loggedOutClicked(e) {
+    this.toasterService.success('User successfully logged out !');
     this.messageEvent.emit(null);
   }
 

@@ -1,6 +1,8 @@
 <div class="w3-container w3-center">
   <button (click)="sel=1" class="btn">Add User</button>
   <button (click)="sel=2" class="btn">Manage Users</button>
+  <button (click)="sel=3" class="btn">Games</button>
+  <button (click)="sel=4" class="btn">Check Scores</button>
   <button (click)="loggedOutClicked($event)" class="btn">Log Out</button>
 
   <div *ngIf="sel==1">
@@ -9,6 +11,14 @@
 
   <div *ngIf="sel==2">
     <app-admin-manage-users></app-admin-manage-users>
+  </div>
+
+  <div *ngIf="sel==3">
+    <app-show-games></app-show-games>
+  </div>
+
+  <div *ngIf="sel==4">
+    <app-check-scores [loggedInUser]="loggedInUser"></app-check-scores>
   </div>
 
 </div>

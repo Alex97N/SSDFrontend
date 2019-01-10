@@ -14,6 +14,10 @@ import { AdminManageUsersComponent } from './admin-manage-users/admin-manage-use
 import {FormsModule} from '@angular/forms';
 import {ShowGamesComponent} from './show-games/show-games.component';
 import {CheckScoresComponent} from './check-scores/check-scores.component';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckUserScoresComponent } from './check-user-scores/check-user-scores.component';
+import { MatPaginatorModule, MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,14 +30,24 @@ import {CheckScoresComponent} from './check-scores/check-scores.component';
     AdminAddUserComponent,
     AdminManageUsersComponent,
     ShowGamesComponent,
-    CheckScoresComponent
+    CheckScoresComponent,
+    CheckUserScoresComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    ToastrService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

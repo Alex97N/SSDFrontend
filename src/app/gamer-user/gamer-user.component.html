@@ -1,6 +1,7 @@
 <div class="w3-container w3-center">
   <button (click)="usel=1" class="btn">Games</button>
   <button (click)="usel=2" class="btn">Check Scores</button>
+  <button (click)="loggedOutClicked($event)" class="btn">Log Out</button>
 
   <div *ngIf="usel==1">
     <app-show-games></app-show-games>
