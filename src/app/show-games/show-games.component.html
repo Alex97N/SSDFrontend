@@ -3,11 +3,11 @@
   <button (click)="gnr=2" class="btn">Snake</button>
 
   <div *ngIf="gnr==1">
-    <app-game1></app-game1>
+    <app-rock-paper-scissors [loggedInUser]="loggedInUser"></app-rock-paper-scissors>
   </div>
 
   <div *ngIf="gnr==2">
-    <app-game2></app-game2>
+    <app-snake [loggedInUser]="loggedInUser"></app-snake>
   </div>
 
 </div>

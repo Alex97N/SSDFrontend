@@ -1,5 +1,5 @@
-import {Role} from '../role/Role';
-import {UserGame} from '../userGame/user-game';
+import {Role} from './Role';
+import {UserGame} from './user-game';
 
 export interface User {
   username?: string;

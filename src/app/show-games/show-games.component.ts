@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../entities/User';
 
 @Component({
   selector: 'app-show-games',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ShowGamesComponent implements OnInit {
 
   gnr = 0;
+
+  @Input() loggedInUser: User;
 
   constructor() { }
 

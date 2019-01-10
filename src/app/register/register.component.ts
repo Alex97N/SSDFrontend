@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {CustomHttpService} from '../services/custom-http.service';
-import {Message} from '../message/message';
+import {Message} from '../entities/message';
 
 
 @Component({

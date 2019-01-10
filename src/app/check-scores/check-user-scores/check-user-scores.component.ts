@@ -1,7 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {CustomHttpService} from '../services/custom-http.service';
-import {User} from '../user/User';
+import {CustomHttpService} from '../../services/custom-http.service';
+import {User} from '../../entities/User';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {UserGame} from '../../entities/user-game';
 
 export class LocalScoresData {
   gameName: string;
@@ -35,13 +36,17 @@ export class CheckUserScoresComponent implements OnInit {
 
     let localScoreDatas: LocalScoresData[] = [];
 
-    for (let i = 0; i < this.loggedInUser.userGameList.length; i++) {
-      localScoreDatas.push(new LocalScoresData(this.loggedInUser.userGameList[i].id.gameID, this.loggedInUser.userGameList[i].score));
-    }
+    this.http.get('/user/getUserByUsername?username=' + this.loggedInUser.username).subscribe(
+      (value: User) => {
+        for (let i = 0; i < value.userGameList.length; i++) {
+          localScoreDatas.push(new LocalScoresData(value.userGameList[i].id.gameID, value.userGameList[i].score));
+        }
 
-    this.dataSource = new MatTableDataSource(localScoreDatas);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+        this.dataSource = new MatTableDataSource(localScoreDatas);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+    );
 
   }
 

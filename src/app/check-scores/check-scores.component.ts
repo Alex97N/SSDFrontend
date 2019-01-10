@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../user/User';
+import {User} from '../entities/User';
 
 @Component({
   selector: 'app-check-scores',

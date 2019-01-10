@@ -1,11 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../entities/User';
+import {Message} from '../../entities/message';
+import {CustomHttpService} from '../../services/custom-http.service';
+import {UserGame} from '../../entities/user-game';
 
 @Component({
-  selector: 'app-game1',
-  templateUrl: './game1.component.html',
-  styleUrls: ['./game1.component.css']
+  selector: 'app-rock-paper-scissors',
+  templateUrl: './rockPaperScissors.component.html',
+  styleUrls: ['./rockPaperScissors.component.css']
 })
-export class Game1Component implements OnInit {
+export class RockPaperScissorsComponent implements OnInit {
+
+  @Input() loggedInUser: User;
+  userScore: number;
+
   scores = [0, 0];
   weapons = [
     'rock',
@@ -69,6 +77,16 @@ export class Game1Component implements OnInit {
       // YOU WIN
       this.theResult = 0;
       this.scores[0] = this.scores[0] + 1;
+
+      if (this.scores[0] > this.userScore) {
+        this.http.get('userGame/updateScore?username=' + this.loggedInUser.username + '&gameName=rockPaperScissors&score=' + this.scores[0]).subscribe(
+          (value1: boolean) => {
+          }
+        );
+
+        this.userScore = this.scores[0];
+      }
+
     } else {
       // YOU LOSE
       this.theResult = 1;
@@ -76,6 +94,23 @@ export class Game1Component implements OnInit {
     }
   }
 
+  constructor(private http: CustomHttpService) {
+  }
+
   ngOnInit(): void {
+
+    this.http.get('/userGame/addUserGame?username=' + this.loggedInUser.username + '&gameName=rockPaperScissors&score=' + 0).subscribe(
+      (value: Message) => {
+        this.userScore = 0;
+        if (value.message !== 'UserGame added successfully') {
+          this.http.get('/userGame/getUserGame?username=' + this.loggedInUser.username + '&gameName=rockPaperScissors').subscribe(
+            (value1: UserGame) => {
+              this.userScore = value1.score;
+            }
+          );
+        }
+      }
+    );
+
   }
 }

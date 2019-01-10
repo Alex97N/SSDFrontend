@@ -4,11 +4,10 @@
   <button (click)="loggedOutClicked($event)" class="btn">Log Out</button>
 
   <div *ngIf="usel==1">
-    <app-show-games></app-show-games>
+    <app-show-games [loggedInUser]="loggedInUser"></app-show-games>
   </div>
 
   <div *ngIf="usel==2">
-    <app-check-scores></app-check-scores>
+    <app-check-scores [loggedInUser]="loggedInUser"></app-check-scores>
   </div>
-
 </div>

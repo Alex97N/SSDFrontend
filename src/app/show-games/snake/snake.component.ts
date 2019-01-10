@@ -1,14 +1,19 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import { CONTROLS, COLORS, BOARD_SIZE, GAME_MODES } from './app.constants';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {CONTROLS, COLORS, BOARD_SIZE, GAME_MODES} from './app.constants';
+import {CustomHttpService} from '../../services/custom-http.service';
+import {Message} from '../../entities/message';
+import {User} from '../../entities/User';
 
 @Component({
-  selector: 'app-game2',
-  templateUrl: './game2.component.html',
-  styleUrls: ['./game2.component.css']
+  selector: 'app-snake',
+  templateUrl: './snake.component.html',
+  styleUrls: ['./snake.component.css']
 })
-export class Game2Component implements OnInit {
+export class SnakeComponent implements OnInit {
 
-  constructor() {
+  @Input() loggedInUser: User;
+
+  constructor(private http: CustomHttpService) {
     this.setBoard();
   }
 
@@ -72,6 +77,7 @@ export class Game2Component implements OnInit {
 
     return COLORS.BOARD;
   }
+
   updatePositions(): void {
     const newHead = this.repositionHead();
     const me = this;
@@ -215,6 +221,18 @@ export class Game2Component implements OnInit {
     }, 500);
 
     this.setBoard();
+
+    this.http.get('/userGame/addUserGame?username=' + this.loggedInUser.username + '&gameName=snake&score=' + this.score).subscribe(
+      (value: Message) => {
+        if (value.message !== 'UserGame added successfully') {
+          this.http.get('userGame/updateScore?username=' + this.loggedInUser.username + '&gameName=snake&score=' + this.score).subscribe(
+            (value1: boolean) => {
+            }
+          );
+        }
+      }
+    );
+
   }
 
   randomNumber(): any {
@@ -251,7 +269,7 @@ export class Game2Component implements OnInit {
     };
 
     for (let i = 0; i < 3; i++) {
-      this.snake.parts.push({ x: 8 + i, y: 8 });
+      this.snake.parts.push({x: 8 + i, y: 8});
     }
 
     if (mode === 'obstacles') {

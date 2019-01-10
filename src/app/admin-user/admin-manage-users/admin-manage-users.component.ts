@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../user/User';
+import {User} from '../../entities/User';
 import {HttpClient} from '@angular/common/http';
-import {CustomHttpService} from '../services/custom-http.service';
+import {CustomHttpService} from '../../services/custom-http.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -31,13 +31,16 @@ export class AdminManageUsersComponent implements OnInit {
       this.http.get('/user/unbanUser?username=' + this.selectedUser.username).subscribe(
         (value: boolean) => {
           if (value === true) {
-            this.toasterService.success();
+            this.toasterService.success('User : ' + this.selectedUser + ' successfully unbanned');
           }
         }
       );
     } else {
       this.http.get('/user/banUser?username=' + this.selectedUser.username).subscribe(
         (value: boolean) => {
+          if (value === true) {
+            this.toasterService.success('User : ' + this.selectedUser + ' successfully banned');
+          }
         }
       );
     }

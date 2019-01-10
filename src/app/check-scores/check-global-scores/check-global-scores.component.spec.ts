@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomepageComponent } from './homepage.component';
+import { CheckGlobalScoresComponent } from './check-global-scores.component';
 
-describe('HomepageComponent', () => {
-  let component: HomepageComponent;
-  let fixture: ComponentFixture<HomepageComponent>;
+describe('CheckGlobalScoresComponent', () => {
+  let component: CheckGlobalScoresComponent;
+  let fixture: ComponentFixture<CheckGlobalScoresComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomepageComponent ]
+      declarations: [ CheckGlobalScoresComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomepageComponent);
+    fixture = TestBed.createComponent(CheckGlobalScoresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
