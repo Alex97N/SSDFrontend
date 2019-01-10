@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule, MatCheckboxModule, MatCardModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +17,8 @@ import { AdminManageUsersComponent } from './admin-manage-users/admin-manage-use
 import {FormsModule} from '@angular/forms';
 import {ShowGamesComponent} from './show-games/show-games.component';
 import {CheckScoresComponent} from './check-scores/check-scores.component';
+import { Game1Component } from './game1/game1.component';
+import { Game2Component } from './game2/game2.component';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckUserScoresComponent } from './check-user-scores/check-user-scores.component';
@@ -31,7 +36,10 @@ import { MatPaginatorModule, MatTableModule, MatSortModule, MatFormFieldModule, 
     AdminManageUsersComponent,
     ShowGamesComponent,
     CheckScoresComponent,
-    CheckUserScoresComponent
+    CheckUserScoresComponent,
+    CheckScoresComponent,
+    Game1Component,
+    Game2Component
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,13 @@ import { MatPaginatorModule, MatTableModule, MatSortModule, MatFormFieldModule, 
     MatTableModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [
     ToastrService
