@@ -1,13 +1,13 @@
 <div class="w3-container w3-center">
-  <button (click)="gnr=1" class="btn">PRX</button>
+  <button (click)="gnr=1" class="btn">Rock Paper Scissors</button>
   <button (click)="gnr=2" class="btn">IDK</button>
 
   <div *ngIf="gnr==1">
-    <!--<app-game1></app-game1>-->
+    <app-game1></app-game1>
   </div>
 
   <div *ngIf="gnr==2">
-    <!--<app-game2></app-game2>-->
+    <app-game2></app-game2>
   </div>
 
 </div>

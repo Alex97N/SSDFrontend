@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule, MatCheckboxModule, MatCardModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +17,10 @@ import { AdminManageUsersComponent } from './admin-manage-users/admin-manage-use
 import {FormsModule} from '@angular/forms';
 import {ShowGamesComponent} from './show-games/show-games.component';
 import {CheckScoresComponent} from './check-scores/check-scores.component';
+import { Game1Component } from './game1/game1.component';
+import { Game2Component } from './game2/game2.component';
+
+
 
 @NgModule({
   declarations: [
@@ -26,12 +33,20 @@ import {CheckScoresComponent} from './check-scores/check-scores.component';
     AdminAddUserComponent,
     AdminManageUsersComponent,
     ShowGamesComponent,
-    CheckScoresComponent
+    CheckScoresComponent,
+    Game1Component,
+    Game2Component
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
