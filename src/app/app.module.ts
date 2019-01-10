@@ -22,6 +22,7 @@ import { Game2Component } from './game2/game2.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,6 @@ import { Game2Component } from './game2/game2.component';
     CheckScoresComponent,
     Game1Component,
     Game2Component
-
   ],
   imports: [
     BrowserModule,
